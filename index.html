@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ketlin Costa</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Ketlin Costa</h1>
+
+    <div class="actions">
+      <button class="btn" onclick="abrirCadastroCompleto()">Cadastrar Cliente + Evento</button>
+      <button class="btn btn-outline" onclick="visualizarEventosAgendados()">Ver Eventos Agendados</button>
+      <button class="btn btn-outline" onclick="abrirBuscaCliente()">Buscar Cliente</button>
+    </div>
+
+    <div id="formularioCompleto" class="card hidden">
+      <h2>Cadastro Completo</h2>
+      <form id="formCadastroCompleto">
+        <h3>Cliente</h3>
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="text" id="telefone" placeholder="Telefone">
+        <input type="text" id="insta" placeholder="Instagram">
+        <input type="text" id="endereco" placeholder="Endereço">
+        <input type="text" id="cpf" placeholder="CPF">
+
+        <h3>Evento</h3>
+        <input type="text" id="tipo" placeholder="Tipo de Evento">
+        <input type="date" id="dataEvento" required>
+
+        <h3>Pagamento</h3>
+        <input type="number" id="valorTotal" placeholder="Valor Total">
+        <input type="number" id="valorPago" placeholder="Valor Pago">
+
+        <button class="btn" type="submit">Salvar Tudo</button>
+      </form>
+    </div>
+
+    <div id="listaEventos" class="card hidden">
+      <h2>Eventos Agendados</h2>
+      <label for="filtroData">Filtrar por Data:</label>
+      <input type="date" id="filtroData" onchange="filtrarEventosPorData()">
+      <ul id="eventosFiltrados" class="event-list"></ul>
+    </div>
+
+    <div id="buscaCliente" class="card hidden">
+      <h2>Buscar Cliente</h2>
+      <input type="text" id="nomeBusca" placeholder="Digite o nome do cliente">
+      <button class="btn" onclick="buscarClientePorNome()">Buscar</button>
+      <div id="resultadoBusca"></div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUJJ9IUjO3oJ-CJRmrUQvvv7PDkrtQkl0",
+      authDomain: "ketlincosta-a1ba5.firebaseapp.com",
+      projectId: "ketlincosta-a1ba5",
+      storageBucket: "ketlincosta-a1ba5.appspot.com",
+      messagingSenderId: "807548846644",
+      appId: "1:807548846644:web:3800c8eecf4d3edba40061"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+  <!-- Seu JS principal -->
+  <script src="script.js"></script>
+</body>
+</html>
